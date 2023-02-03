@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+#__next {
+  width: 50vw;
+  height: 100vh;
+}
+
+main {
+  position: absolute;
+  top: 4rem;
+  max-width: 50vw;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 56.25rem) {
+  #__next {
+    width: 100vw;
+  }
+
+  main {
+    max-width: 100vw;
+  }
+}
