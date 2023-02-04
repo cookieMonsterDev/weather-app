@@ -12,6 +12,7 @@ export const fetchCurrentWeather =
       const { data } = await weatherApi.get(URL);
 
       dispatch(currentWeatherSlice.actions.fetchCurrentWeatherSuccess(data));
+      dispatch(currentWeatherSlice.actions.resetError())
       return;
     } catch (error) {
       dispatch(

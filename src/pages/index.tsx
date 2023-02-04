@@ -40,7 +40,7 @@ export default function Home() {
     //     coordinates || JSON.parse(localStorage.getItem("currentPosition")!)
     //   )
     // );
-  }, []);
+  }, [coordinates?.latitude]);
 
   if (cordsError || weatherError) {
     return (

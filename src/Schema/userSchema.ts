@@ -6,6 +6,9 @@ export interface User {
   email: string;
   password: string;
   cities: string[];
+  __v: number;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const NO_SPACES = /^\S*$/;

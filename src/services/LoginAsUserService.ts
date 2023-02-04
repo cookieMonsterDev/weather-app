@@ -15,7 +15,11 @@ export const loginAsUserService = async (body: UserInput): Promise<User> => {
       password: body.password,
     });
 
-    return res!;
+    if(!res) {
+      throw 'Wrong email or password'
+    }
+
+    return res;
   } catch (error) {
     throw error;
   }

@@ -7,6 +7,7 @@
   background-color: $primaryBackgroundColor;
   color: white;
   display: grid;
+  position: relative;
   grid-template-rows: 0.4fr 1fr;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
@@ -19,7 +20,7 @@
   grid-area: location;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -50,4 +51,20 @@
    > span {
     margin-top: 0.6rem;
    }
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  color: white;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+@media only screen and (max-width: 25rem) {
+  .icon {
+    right: 0.5rem;
+    top: 0.5rem;
+  }
 }

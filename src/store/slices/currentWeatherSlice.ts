@@ -18,6 +18,9 @@ export const currentWeatherSlice = createSlice({
   name: "weather",
   initialState,
   reducers: {
+    resetError(state) {
+      state.error = null
+    },
     fetchCurrentWeather(state) {
       state.isLoading = true;
     },

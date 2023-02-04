@@ -16,6 +16,10 @@ export const createUserService = async (body: UserInput): Promise<User> => {
 
     const res = await newUser.save();
 
+    if(!res) {
+      throw 'Something went wrong'
+    }
+
     return res
   } catch (error) {
     throw error;

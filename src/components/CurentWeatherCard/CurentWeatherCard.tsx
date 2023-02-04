@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 import { CurrentWeather } from "@/store/types/currentWeather";
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 import style from "./CurentWeatherCard.module.scss";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
 const CurentWeatherCard = (props: CurrentWeather) => {
+  const { user } = useSelector(
+    (state: RootState) => state.user
+  );
   
   const currentDate = new Date();
   const formaterDate = new Intl.DateTimeFormat("en-GB", { dateStyle: "full" });
@@ -26,9 +33,19 @@ const CurentWeatherCard = (props: CurrentWeather) => {
     };
   }, []);
 
+  const handleBookmark = () => {
+    const has = user?.cities.includes(props.name)
+
+    if(has) {
+      return <BookmarkIcon className={style.icon}/>
+    }
+
+    return <BookmarkBorderIcon className={style.icon}/>
+  }
 
   return (
     <section className={style.container}>
+      {user && handleBookmark()}
       <div className={style.location}>
         <h2>{props.name}</h2>
         <span>{date}</span>

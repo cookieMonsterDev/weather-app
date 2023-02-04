@@ -3,16 +3,32 @@ import CustomTextField from "../CustomTextField/CustomTextField";
 import HomeIcon from '@mui/icons-material/Home';
 import Link from "next/link";
 import { Button } from '@mui/material'
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect } from "react";
 import {userNameValidator, emailValidator, passwordValidator} from './components/validators'
-import axios from "axios";
+import { useCustomDispatch } from "@/hooks/store";
+import { fetchRegisterUser } from "../../store/thunks/fetchRegisterUser";
+import { fetchLoginUser } from "../../store/thunks/fetchLoginUser";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
+import { useRouter } from "next/router";
 
 interface AuthFromProps {
   isRegister: boolean;
 }
 
 const AuthFrom = ({ isRegister }: AuthFromProps) => {
+  const router = useRouter()
+  const { user } = useSelector(
+    (state: RootState) => state.user
+  );
+  const dispatch = useCustomDispatch();
   const [formDate, setFromDate] = useState({})
+
+  useEffect(() => {
+    if(user) {
+      router.push("/")
+    }
+  }, [user])
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -26,7 +42,13 @@ const AuthFrom = ({ isRegister }: AuthFromProps) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
   
-    console.log(formDate)
+    if(isRegister) {
+      dispatch(fetchRegisterUser(formDate as any))
+      return;
+    }
+
+    dispatch(fetchLoginUser(formDate as any))
+    return;
   }
 
   return (
