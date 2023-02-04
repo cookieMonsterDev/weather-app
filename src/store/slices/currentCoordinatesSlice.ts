@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface Coordinates {
-  latitude: number;
-  longitude: number;
+  lat: number;
+  lon: number;
 }
 
 export interface CurrentCoordinatesState {
@@ -21,9 +21,9 @@ export const currentCoordinatesSlice = createSlice({
   initialState,
   reducers: {
     setCurrentCoordinatesSuccess(state, action: PayloadAction<Coordinates>) {
+      state.error = null;
       state.coordinates = action.payload;
     },
-
     setCurrentCoordinatesError(state, action: PayloadAction<string>) {
       state.error = action.payload;
     },

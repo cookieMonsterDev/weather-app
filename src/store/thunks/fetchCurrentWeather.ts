@@ -7,7 +7,7 @@ export const fetchCurrentWeather =
   (payload: Coordinates) => async (dispatch: AppDispatch) => {
     try {
       dispatch(currentWeatherSlice.actions.fetchCurrentWeather());
-      const URL = `data/2.5/weather?lat=${payload.latitude}&lon=${payload.longitude}`;
+      const URL = `data/2.5/weather?lat=${payload.lat}&lon=${payload.lon}`;
 
       const { data } = await weatherApi.get(URL);
 

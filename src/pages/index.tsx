@@ -12,6 +12,8 @@ import forcast from "../fakeDate.json";
 import { ForecastWeather } from "@/store/types/forecastWeather";
 
 export default function Home() {
+  console.log(process.env.SERVER)
+
   const { error: cordsError, coordinates } = useSelector(
     (state: RootState) => state.currentCoordinates
   );
@@ -30,17 +32,9 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getCurrentCoordinates());
-    dispatch(
-      fetchCurrentWeather(
-        coordinates || JSON.parse(localStorage.getItem("currentPosition")!)
-      )
-    );
-    // dispatch(
-    //   fetchForecastWeather(
-    //     coordinates || JSON.parse(localStorage.getItem("currentPosition")!)
-    //   )
-    // );
-  }, [coordinates?.latitude]);
+    dispatch(fetchCurrentWeather(coordinates!));
+    // dispatch(fetchForecastWeather(coordinates!));
+  }, [coordinates?.lat, cordsError]);
 
   if (cordsError || weatherError) {
     return (
