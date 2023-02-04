@@ -1,5 +1,5 @@
 import { useCustomDispatch } from "@/hooks/store";
-import { fetchCurrentWeatherCity } from '../../store/thunks/fetchCurrentWeatherCity'
+import { fetchCurrentWeatherCity } from "../../store/thunks/fetchCurrentWeatherCity";
 import SearchIcon from "@mui/icons-material/Search";
 import { FormEvent, useRef } from "react";
 import style from "./SearchBar.module.scss";
@@ -10,8 +10,11 @@ const SearchBar = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const city = ref.current!.value.toString()
-    dispatch(fetchCurrentWeatherCity(city))
+    const city = ref.current!.value.toString();
+    dispatch(fetchCurrentWeatherCity(city));
+    if (ref.current!.value) {
+      ref.current!.value = "";
+    }
   };
 
   return (

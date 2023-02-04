@@ -6,7 +6,7 @@ const weatherApi = axios.create({
 
 weatherApi.interceptors.request.use(config => {
   config.url =
-    config.url + '&appid=c2f692e14be30aa804eea62f3bdfd329';
+    config.url + '&units=metric' + '&appid=c2f692e14be30aa804eea62f3bdfd329';
   return config;
 });
 

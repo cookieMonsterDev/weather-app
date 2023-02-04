@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { getCurrentCoordinates } from "@/store/thunks/getCurrentCoordinates";
 import { useCustomDispatch } from "@/hooks/store";
 import { fetchCurrentWeather } from "@/store/thunks/fetchCurrentWeather";
+import CurentWeatherCard from "../components/CurentWeatherCard/CurentWeatherCard";
 
 export default function Home() {
   const { error: cordsError, coordinates } = useSelector(
@@ -27,7 +28,6 @@ export default function Home() {
     );
   }, []);
 
-
   if (cordsError || weatherError) {
     return (
       <>
@@ -38,7 +38,6 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main>
-          <Link href="/test">test</Link>
           {cordsError || weatherError}
         </main>
       </>
@@ -54,18 +53,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Link href="/test">test</Link>
-        {isLoading && <div>Loading</div>}
-        {JSON.stringify(weather)}
+        {isLoading ? <div>Loading</div> : <CurentWeatherCard {...weather!} />}
       </main>
     </>
   );
 }
-
-// export const getServerSideProps = async () => {
-//   const res = await
-
-//   return {
-//     props: {},
-//   }
-// }
