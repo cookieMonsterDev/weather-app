@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { css, TextField } from "@mui/material";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 interface CustomTextFieldProps {
   id: string;
@@ -10,6 +10,12 @@ interface CustomTextFieldProps {
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => void;
   validator: (str: string | undefined) => string;
+}
+
+interface StyledTextFieldProsp {
+  id: string;
+  label: string;
+  helperText: string;
 }
 
 const CustomTextField = ({
@@ -43,7 +49,7 @@ const CustomTextField = ({
 
 export default CustomTextField;
 
-const StyledTextField = styled(TextField)<CustomTextFieldProps>`
+const StyledTextField = styled(TextField)<StyledTextFieldProsp>`
   width: 30rem;
 
   input {
