@@ -31,8 +31,6 @@ export const fetchRegisterUser =
       return;
     }
 
-
-    console.log(data.res)
     dispatch(userSlice.actions.fetchUserSuccess(data.res));
     return;
   };

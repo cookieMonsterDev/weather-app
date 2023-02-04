@@ -51,9 +51,18 @@ export default CustomTextField;
 
 const StyledTextField = styled(TextField)<StyledTextFieldProsp>`
   width: 30rem;
+  background: transparent;
 
   input {
     color: white;
+
+    &:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus {
+      -webkit-text-fill-color: white;
+      -webkit-box-shadow: 0 0 0px 40rem white inset;
+      box-shadow: 0 0 0 30px #132f4c inset !important;
+    }
   }
 
   & label.MuiFormLabel-root {
