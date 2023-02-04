@@ -3,7 +3,6 @@ import { CurrentWeather } from "@/store/types/currentWeather";
 import style from "./CurentWeatherCard.module.scss";
 
 const CurentWeatherCard = (props: CurrentWeather) => {
-  const icon = props.weather?.[0].icon;
   
   const currentDate = new Date();
   const formaterDate = new Intl.DateTimeFormat("en-GB", { dateStyle: "full" });
@@ -35,7 +34,7 @@ const CurentWeatherCard = (props: CurrentWeather) => {
         <span>{date}</span>
       </div>
       <div className={style.weather}>
-        <img src={`http://openweathermap.org/img/wn/${props.weather?.[0].icon}@2x.png`}></img>
+        <img src={`http://openweathermap.org/img/wn/${props.weather?.[0].icon}@2x.png`} alt={props.weather?.[0].icon}/>
         <span>{props.weather?.[0].main}</span>
       </div>
       <div className={style.temp}>

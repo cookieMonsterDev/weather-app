@@ -32,6 +32,10 @@ export const currentWeatherSlice = createSlice({
   },
 });
 
-export const {} = currentWeatherSlice.actions;
+export const {
+  fetchCurrentWeather,
+  fetchCurrentWeatherSuccess,
+  fetchCurrentWeatherError,
+} = currentWeatherSlice.actions;
 
 export default currentWeatherSlice.reducer;

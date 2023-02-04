@@ -15,12 +15,12 @@ export interface CurrentWeather {
   cod: number;
 }
 
-interface Coord {
+export interface Coord {
   lon: number;
   lat: number;
 }
 
-interface Weather {
+export interface Weather {
   id: number;
   main: string;
   description: string;
