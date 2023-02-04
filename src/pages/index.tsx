@@ -12,6 +12,8 @@ import forcast from "../fakeDate.json";
 import { ForecastWeather } from "@/store/types/forecastWeather";
 
 export default function Home() {
+  console.log(process.env.MONGO_URL)
+
   const { error: cordsError, coordinates } = useSelector(
     (state: RootState) => state.currentCoordinates
   );
