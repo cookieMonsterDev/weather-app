@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+
+
+module.exports = {
   env: {
     MONGO_URL: process.env.MONGO_URL,
     WEATHER_BASE_URL: process.env.WEATHER_BASE_URL,
@@ -8,15 +10,12 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
-
-
 module.exports = {
   async rewrites() {
       return [
         {
-          source: '*',
-          destination: '*',
+          source: '/api/:path*',
+          destination: `https://${process.env.VERCEL_URL}/:path*'`,
         },
       ]
     },
