@@ -15,8 +15,7 @@ export const fetchLoginUser =
 
     console.log(url)
 
-    const URL = `https://${process.env.VERCEL_URL}/api/login`;
-    // const URL = `http://localhost:3000/api/login`;
+    const URL = `https://${process.env.VERCEL_URL!}/api/login`;
 
     const res = await axios.post(URL, payload);
 

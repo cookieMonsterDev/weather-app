@@ -12,7 +12,7 @@ import forcast from "../fakeDate.json";
 import { ForecastWeather } from "@/store/types/forecastWeather";
 
 export default function Home() {
-  console.log(process.env.SERVER)
+  console.log(process.env.VERCEL_URL);
 
   const { error: cordsError, coordinates } = useSelector(
     (state: RootState) => state.currentCoordinates
@@ -64,7 +64,9 @@ export default function Home() {
         ) : (
           <>
             <CurentWeatherCard {...weather!} />
-            <ForecastWeatherComponent {...forcast! as unknown as ForecastWeather}/>
+            <ForecastWeatherComponent
+              {...(forcast! as unknown as ForecastWeather)}
+            />
           </>
         )}
       </main>

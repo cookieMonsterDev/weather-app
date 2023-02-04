@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 const weatherApi = axios.create({
-  baseURL: 'https://api.openweathermap.org/',
+  baseURL: process.env.WEATHER_BASE_URL!,
 });
 
 weatherApi.interceptors.request.use(config => {
   config.url =
-    config.url + '&units=metric' + '&appid=c2f692e14be30aa804eea62f3bdfd329';
+    config.url + '&units=metric' + '&appid=' + process.env.WEATHER_API_KEY!;
   return config;
 });
 
