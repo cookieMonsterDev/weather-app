@@ -8,7 +8,7 @@ export const fetchForecastWeather =
   (payload: Coordinates) => async (dispatch: AppDispatch) => {
     try {
       dispatch(forecastWeatherSlice.actions.fetchForecastWeather());
-      const URL = `data/2.5/forecast/daily?lat=${payload.latitude}&lon=${payload.longitude}&cnt=7`;
+      const URL = `data/2.5/forecast/daily?lat=${payload.lat}&lon=${payload.lon}&cnt=7`;
 
       const { data } = await weatherApi.get(URL);
 
