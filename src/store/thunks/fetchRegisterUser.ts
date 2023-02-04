@@ -13,7 +13,7 @@ export const fetchRegisterUser =
   (payload: Body) => async (dispatch: AppDispatch) => {
     dispatch(userSlice.actions.fetchUser);
 
-    const URL = `https://${process.env.VERCEL_URL!}/api/login`;
+    const URL = `http://${process.env.VERCEL_URL!}/api/login`;
 
     const res = await axios.post(URL, payload);
 
