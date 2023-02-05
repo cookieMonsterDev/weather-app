@@ -1,8 +1,11 @@
 import { loginAsUserService } from "@/services/LoginAsUserService";
 import type { NextApiRequest, NextApiResponse } from "next";
+import connectMongo from "utils/connectMongo";
 
 const loginAsUser = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
+    await connectMongo()
+
     const user = await loginAsUserService(req.body);
 
     res.status(200).json({
