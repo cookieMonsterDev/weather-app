@@ -18,8 +18,6 @@ export const fetchUpdateBookmarks =
 
     const data: Responce = res.data;
 
-    console.log(data)
-
     if (data.isError) {
       dispatch(userSlice.actions.fetchUserError(data.res));
       return;

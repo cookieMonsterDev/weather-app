@@ -62,8 +62,6 @@ const CurentWeatherCard = (props: CurrentWeather) => {
 
     array.push(props.name)
 
-    console.log(array, user?._id);
-
     dispatch(
       fetchUpdateBookmarks({
         id: user?._id!,
