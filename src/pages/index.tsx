@@ -38,6 +38,8 @@ export default function Home() {
   }, [coordinates?.lat, cordsError]);
 
   useEffect(() => {
+    console.log(process.env.MONGO_URL)
+
     const test = async () => {
       const res = await axios.post(
         `https://${process.env.VERCEL_URL}/api/login`,
