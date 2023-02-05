@@ -1,7 +1,6 @@
-import { loginAsUserService } from "@/services/LoginAsUserService";
 import type { NextApiRequest, NextApiResponse } from "next";
 import NextCors from "nextjs-cors";
-import userModel from "@/Schema/userSchema";
+
 import connectMongo from "utils/connectMongo";
 
 
@@ -13,7 +12,6 @@ const Test = async (req: NextApiRequest, res: NextApiResponse) => {
       origin: "*",
       optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
     });
-
     await connectMongo();
 
     res.status(200).json({'test': 'test'});

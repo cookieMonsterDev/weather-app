@@ -1,4 +1,3 @@
-import { loginAsUserService } from "@/services/LoginAsUserService";
 import type { NextApiRequest, NextApiResponse } from "next";
 import NextCors from "nextjs-cors";
 import userModel from "@/Schema/userSchema";
