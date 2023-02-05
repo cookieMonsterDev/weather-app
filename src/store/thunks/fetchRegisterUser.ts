@@ -19,7 +19,6 @@ export const fetchRegisterUser =
 
     const data: Responce = res.data;
 
-
     if(data.isError && data.res.code === 11000) {
       dispatch(userSlice.actions.fetchUserError(`${Object.keys(data.res.keyPattern)[0]} is taken`))
       return
@@ -33,17 +32,3 @@ export const fetchRegisterUser =
     dispatch(userSlice.actions.fetchUserSuccess(data.res));
     return;
   };
-
-
-//   code
-// : 
-// 11000
-// index
-// : 
-// 0
-// keyPattern
-// : 
-// {email: 1}
-// keyValue
-// : 
-// {email: 'mykhailo.toporkov@gmail.com'}

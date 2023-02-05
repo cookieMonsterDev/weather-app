@@ -40,7 +40,7 @@ export default function Home() {
 
   useEffect(() => {
     const test = async () => {
-      const res = await axios.post('http://localhost:3000/api/test', {test: 1})
+      const res = await axios.post(`https://${process.env.VERCEL_URL}/api/test`, {test: 1})
       return res
     }
 
