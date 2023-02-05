@@ -2,9 +2,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { createUserService } from "@/services/CreateUserService";
 
 const RegisterUser = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { method } = req;
-
-  if (method === "OPTIONS") {
     try {
       const user = await createUserService(req.body);
 
@@ -18,7 +15,6 @@ const RegisterUser = async (req: NextApiRequest, res: NextApiResponse) => {
         res: error,
       });
     }
-  }
 };
 
 export default RegisterUser;

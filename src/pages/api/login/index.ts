@@ -2,9 +2,7 @@ import { loginAsUserService } from "@/services/LoginAsUserService";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 const loginAsUser = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { method } = req;
 
-  if (method === "OPTIONS") {
     try {
       const user = await loginAsUserService(req.body);
 
@@ -18,7 +16,6 @@ const loginAsUser = async (req: NextApiRequest, res: NextApiResponse) => {
         res: error,
       });
     }
-  }
 };
 
 export default loginAsUser;
