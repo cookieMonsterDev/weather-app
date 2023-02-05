@@ -10,6 +10,7 @@ import ForecastWeatherComponent from "../components/ForecastWeatherComponent/For
 // import { fetchForecastWeather } from "../store/thunks/fetchForecastWeather";
 import forcast from "../fakeDate.json";
 import { ForecastWeather } from "@/store/types/forecastWeather";
+import axios from "axios";
 
 export default function Home() {
   console.log(process.env.WEATHER_BASE_URL)
@@ -35,6 +36,17 @@ export default function Home() {
     dispatch(fetchCurrentWeather(coordinates!));
     // dispatch(fetchForecastWeather(coordinates!));
   }, [coordinates?.lat, cordsError]);
+
+
+  useEffect(() => {
+    const test = async () => {
+      const res = await axios.post('http://localhost:3000/api/test', {test: 1})
+      return res
+    }
+
+    console.log(test())
+  }, [])
+
 
   if (cordsError || weatherError) {
     return (
