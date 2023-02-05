@@ -6,14 +6,6 @@ const nextConfig = {
     WEATHER_API_KEY: process.env.WEATHER_API_KEY,
     VERCEL_URL: process.env.VERCEL_URL,
   },
-  async rewrites() {
-    return [
-      {
-        source: '/api/login',
-        destination: `https://${process.env.VERCEL_URL}`,
-      },
-    ]
-  },
 };
 
 module.exports = nextConfig;
