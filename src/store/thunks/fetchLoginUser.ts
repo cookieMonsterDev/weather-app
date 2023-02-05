@@ -11,9 +11,6 @@ interface Body {
 export const fetchLoginUser =
   (payload: Body) => async (dispatch: AppDispatch) => {
     dispatch(userSlice.actions.fetchUser);
-    const url = process.env.VERCEL_URL!
-
-    console.log(url)
 
     const URL = `https://${process.env.VERCEL_URL!}/api/login`;
 

@@ -13,7 +13,6 @@ import { ForecastWeather } from "@/store/types/forecastWeather";
 import axios from "axios";
 
 export default function Home() {
-  console.log(process.env.WEATHER_BASE_URL);
 
   const { error: cordsError, coordinates } = useSelector(
     (state: RootState) => state.currentCoordinates
