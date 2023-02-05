@@ -9,8 +9,8 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/api/:path*',
-        destination: 'https://api.example.com/:path*',
+        source: '/api/login',
+        destination: `https://${process.env.VERCEL_URL}`,
       },
     ]
   },
