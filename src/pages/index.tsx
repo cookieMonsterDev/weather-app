@@ -13,7 +13,7 @@ import { ForecastWeather } from "@/store/types/forecastWeather";
 import axios from "axios";
 
 export default function Home() {
-  console.log(process.env.WEATHER_BASE_URL)
+  console.log(process.env.WEATHER_BASE_URL);
 
   const { error: cordsError, coordinates } = useSelector(
     (state: RootState) => state.currentCoordinates
@@ -37,16 +37,20 @@ export default function Home() {
     // dispatch(fetchForecastWeather(coordinates!));
   }, [coordinates?.lat, cordsError]);
 
-
   useEffect(() => {
     const test = async () => {
-      const res = await axios.post(`https://${process.env.VERCEL_URL}/api/test`, {test: 1})
-      return res
-    }
+      const res = await axios.post(
+        `https://${process.env.VERCEL_URL}/api/login`,
+        {
+          email: "test123@gmail.com",
+          password: "Test_13456",
+        }
+      );
+      return res;
+    };
 
-    console.log(test())
-  }, [])
-
+    console.log(test());
+  }, []);
 
   if (cordsError || weatherError) {
     return (
