@@ -36,6 +36,9 @@ export const userSlice = createSlice({
     resetUser(state) {
       state.user = null
     },
+    resetUserError(state) {
+      state.error = null
+    },
     setMenu(state, action: PayloadAction<boolean>) {
       state.isMenu = action.payload
     },
@@ -47,6 +50,7 @@ export const {
   fetchUserSuccess,
   fetchUserError,
   resetUser,
+  resetUserError,
   setMenu
 } = userSlice.actions;
 

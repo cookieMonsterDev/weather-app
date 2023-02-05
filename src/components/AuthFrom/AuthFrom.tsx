@@ -15,6 +15,7 @@ import { fetchLoginUser } from "../../store/thunks/fetchLoginUser";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { useRouter } from "next/router";
+import { resetUserError } from "@/store/slices/userSlice";
 
 interface AuthFromProps {
   isRegister: boolean;
@@ -23,7 +24,7 @@ interface AuthFromProps {
 const AuthFrom = ({ isRegister }: AuthFromProps) => {
   const [isDisabled, setDisabled] = useState(true);
   const router = useRouter();
-  const { user } = useSelector((state: RootState) => state.user);
+  const { user, error } = useSelector((state: RootState) => state.user);
   const dispatch = useCustomDispatch();
   const [formDate, setFromDate] = useState({});
 
@@ -36,6 +37,10 @@ const AuthFrom = ({ isRegister }: AuthFromProps) => {
       router.push("/");
     }
   }, [user]);
+
+  useEffect(() => {
+    dispatch(resetUserError())
+  }, [])
 
   const handleChange = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
@@ -113,6 +118,9 @@ const AuthFrom = ({ isRegister }: AuthFromProps) => {
             onChange={handleChange}
             validator={passwordValidator}
           />
+         { error && <span className={style.error}>
+            {error}
+          </span>}
           <Button
             variant="contained"
             type="submit"
