@@ -10,10 +10,10 @@ import ForecastWeatherComponent from "../components/ForecastWeatherComponent/For
 // import { fetchForecastWeather } from "../store/thunks/fetchForecastWeather";
 import forcast from "../fakeDate.json";
 import { ForecastWeather } from "@/store/types/forecastWeather";
-import axios from "axios";
+import ErrorMessage from "../components/ErrorMessasge/ErrorMessage";
+import LoaderWheel from "@/components/LoaderWheel/LoaderWheel";
 
 export default function Home() {
-
   const { error: cordsError, coordinates } = useSelector(
     (state: RootState) => state.currentCoordinates
   );
@@ -34,26 +34,11 @@ export default function Home() {
     dispatch(getCurrentCoordinates());
     dispatch(fetchCurrentWeather(coordinates!));
     // dispatch(fetchForecastWeather(coordinates!));
-  }, [coordinates?.lat, cordsError]);
-
-  useEffect(() => {
-    console.log(process.env.MONGO_URL)
-
-    const test = async () => {
-      const res = await axios.post(
-        `https://${process.env.VERCEL_URL}/api/login`,
-        {
-          email: "test123@gmail.com",
-          password: "Test_13456",
-        }
-      );
-      return res;
-    };
-
-    console.log(test());
-  }, []);
+  }, [cordsError, coordinates?.lat]);
 
   if (cordsError || weatherError) {
+    const error: string = cordsError || weatherError || "";
+
     return (
       <>
         <Head>
@@ -62,7 +47,9 @@ export default function Home() {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <main>{cordsError || weatherError}</main>
+        <main>
+          <ErrorMessage message={error} />
+        </main>
       </>
     );
   }
@@ -77,7 +64,7 @@ export default function Home() {
       </Head>
       <main>
         {isLoading ? (
-          <div>Loading</div>
+          <LoaderWheel />
         ) : (
           <>
             <CurentWeatherCard {...weather!} />

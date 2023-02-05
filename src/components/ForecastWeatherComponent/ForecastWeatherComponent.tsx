@@ -1,3 +1,4 @@
+import React from "react";
 import { ForecastWeather } from "../../store/types/forecastWeather";
 import Card from "./componets/Card";
 import style from "./ForecastWeatherComponent.module.scss";
@@ -13,4 +14,6 @@ const ForecastWeatherComponent = (props: ForecastWeather) => {
   );
 };
 
-export default ForecastWeatherComponent;
+const MemoizedForecastWeather = React.memo(ForecastWeatherComponent);
+
+export default MemoizedForecastWeather;

@@ -9,18 +9,18 @@ interface UserInput {
 
 export const createUserService = async (body: UserInput): Promise<User> => {
   try {
-    await connectMongo()
+    await connectMongo();
 
     const newUser = new userModel({ ...body });
     await newUser.validate();
 
     const res = await newUser.save();
 
-    if(!res) {
-      throw 'Something went wrong'
+    if (!res) {
+      throw "Something went wrong";
     }
 
-    return res
+    return res;
   } catch (error) {
     throw error;
   }

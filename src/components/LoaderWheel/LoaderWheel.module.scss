@@ -1,0 +1,47 @@
+@import "../../styles/colors.module.scss";
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 5rem;
+  height: 5rem;
+  position: relative;
+
+  > div:nth-child(1) {
+    animation-delay: -500ms;
+  }
+
+  > div:nth-child(2) {
+    animation-delay: -350ms;
+  }
+
+  > div:nth-child(3) {
+    animation-delay: -200ms;
+  }
+}
+
+.circle {
+  position: absolute;
+  box-sizing: border-box;
+  width: 5rem;
+  height: 5rem;
+  border: 1rem solid $secondaryBackgroundColor;
+  border-radius: 50%;
+  border-color: $secondaryBackgroundColor transparent transparent transparent;
+  animation: rotation 1500ms infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

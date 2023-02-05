@@ -7,12 +7,14 @@ export interface UserState {
   user: User | null;
   isLoading: boolean;
   error: string | null;
+  isMenu: boolean;
 }
 
 const initialState: UserState = {
   user: null,
   isLoading: false,
   error: null,
+  isMenu: false,
 };
 
 export const userSlice = createSlice({
@@ -31,6 +33,12 @@ export const userSlice = createSlice({
       state.error = action.payload;
       state.isLoading = false;
     },
+    resetUser(state) {
+      state.user = null
+    },
+    setMenu(state, action: PayloadAction<boolean>) {
+      state.isMenu = action.payload
+    },
   },
 });
 
@@ -38,6 +46,8 @@ export const {
   fetchUser,
   fetchUserSuccess,
   fetchUserError,
+  resetUser,
+  setMenu
 } = userSlice.actions;
 
 export default userSlice.reducer;

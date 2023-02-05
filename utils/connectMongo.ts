@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const connectMongo = async () => {
   try {
     const url = process.env.MONGO_URL!
-    mongoose.set("strictQuery", true);
+    mongoose.set("strictQuery", false);
     await mongoose.connect(url);
     console.log('DataBase is connected')
   } catch (error) {

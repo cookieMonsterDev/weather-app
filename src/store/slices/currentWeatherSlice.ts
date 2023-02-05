@@ -26,6 +26,7 @@ export const currentWeatherSlice = createSlice({
     },
     fetchCurrentWeatherSuccess(state, action: PayloadAction<CurrentWeather>) {
       state.weather = action.payload;
+      state.error = null;
       state.isLoading = false;
     },
     fetchCurrentWeatherError(state, action: PayloadAction<string>) {
