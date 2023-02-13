@@ -6,7 +6,7 @@ export const Container = styled.section`
   width: 100%;
   height: 20rem;
   border-radius: 0.6rem;
-  background-color: $primaryBackgroundColor;
+  background-color: #132f4c;
   color: white;
   display: grid;
   position: relative;

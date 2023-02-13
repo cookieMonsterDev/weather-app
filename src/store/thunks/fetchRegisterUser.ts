@@ -3,14 +3,8 @@ import { userSlice } from "../slices/userSlice";
 import { AppDispatch } from "../store";
 import { Responce } from "../types/user";
 
-interface Body {
-  username: string;
-  email: string;
-  password: string;
-}
-
 export const fetchRegisterUser =
-  (payload: Body) => async (dispatch: AppDispatch) => {
+  <T,>(payload: T) => async (dispatch: AppDispatch) => {
     dispatch(userSlice.actions.fetchUser);
 
     const URL = `https://${process.env.VERCEL_URL!}/api/register`;

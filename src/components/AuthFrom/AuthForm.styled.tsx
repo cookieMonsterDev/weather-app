@@ -1,7 +1,56 @@
 import styled from "@emotion/styled";
 import { css, TextField } from "@mui/material";
 
-export const StyledTextField = styled(TextField)<{ helperText: string }>`
+export const Container = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  padding: 3rem 4rem;
+  z-index: 20;
+  background-color: #132f4c;
+  display: flex;
+  justify-content: center;
+  color: white;
+`;
+
+export const Error = styled.span`
+  color: red
+`
+
+export const Form = styled.form`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  > label {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: 900;
+  }
+
+  > a {
+    color: white;
+    font-size: 0.8rem;
+  }
+`
+
+export const Icon = styled.span`
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  svg {
+    color: white;
+    width: 2rem;
+    height: 2rem;
+  }
+`
+
+export const StyledTextField = styled(TextField)<{ helperText: string | false | undefined }>`
   width: 30rem;
   background: transparent;
 
