@@ -1,14 +1,14 @@
-import style from "./LoaderWheel.module.scss";
+import { CircleFrag, Container, Wrapper } from "./LoaderWheel.styled";
 
 const LoaderWheel = () => {
   return (
-    <section className={style.wrapper}>
-    <div className={style.container}>
-      <div className={style.circle} />
-      <div className={style.circle} />
-      <div className={style.circle} />
-    </div>
-    </section>
+    <Wrapper>
+      <Container>
+        <CircleFrag />
+        <CircleFrag />
+        <CircleFrag />
+      </Container>
+    </Wrapper>
   );
 };
 

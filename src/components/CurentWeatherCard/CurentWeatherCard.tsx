@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 import { CurrentWeather } from "@/store/types/currentWeather";
-import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
-import BookmarkIcon from "@mui/icons-material/Bookmark";
-import style from "./CurentWeatherCard.module.scss";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { fetchUpdateBookmarks } from "@/store/thunks/fetchUpdateBookmarks";
 import { useCustomDispatch } from "@/hooks/store";
+import {
+  Container,
+  Location,
+  Weather,
+  Img,
+  Temp,
+  Icon,
+  IconBorder,
+} from "./CurentWeatherCard.styled";
 
 const CurentWeatherCard = (props: CurrentWeather) => {
   const dispatch = useCustomDispatch();
@@ -60,7 +66,7 @@ const CurentWeatherCard = (props: CurrentWeather) => {
   const handleAddBookmark = () => {
     const array = [...user?.cities!];
 
-    array.push(props.name)
+    array.push(props.name);
 
     dispatch(
       fetchUpdateBookmarks({
@@ -74,38 +80,31 @@ const CurentWeatherCard = (props: CurrentWeather) => {
     const has = user?.cities.includes(props.name);
 
     if (has) {
-      return (
-        <BookmarkIcon className={style.icon} onClick={handleRemoveBookmark} />
-      );
+      return <Icon onClick={handleRemoveBookmark} />;
     }
 
-    return (
-      <BookmarkBorderIcon
-        className={style.icon}
-        onClick={handleAddBookmark}
-      />
-    );
+    return <IconBorder onClick={handleAddBookmark} />;
   };
 
   return (
-    <section className={style.container}>
+    <Container>
       {user && handleBookmark()}
-      <div className={style.location}>
+      <Location>
         <h2>{props.name}</h2>
         <span>{date}</span>
-      </div>
-      <div className={style.weather}>
-        <img
+      </Location>
+      <Weather>
+        <Img
           src={`http://openweathermap.org/img/wn/${props.weather?.[0].icon}@2x.png`}
           alt={props.weather?.[0].icon}
         />
         <span>{props.weather?.[0].main}</span>
-      </div>
-      <div className={style.temp}>
+      </Weather>
+      <Temp>
         <h1>{`${props.main?.temp}`}&#8451;</h1>
         <span>Feels like {props.main?.feels_like} &#8451;</span>
-      </div>
-    </section>
+      </Temp>
+    </Container>
   );
 };
 

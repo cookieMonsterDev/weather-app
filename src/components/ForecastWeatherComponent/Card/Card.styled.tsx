@@ -1,7 +1,7 @@
-@import "../../../styles/colors.module.scss";
+import styled from "@emotion/styled";
 
-.container {
-  background-color: $secondaryBackgroundColor;
+export const Container = styled.li`
+  background-color: #1976d2;
   border-radius: 1rem;
   width: 4.5rem;
   height: 100%;
@@ -19,24 +19,8 @@
       justify-content: center;
     }
   }
-}
 
-.icon {
-  width: 4rem;
-  height: 4rem;
-}
-
-.stats {
-  margin-top: 0.5rem;
-  width: 70%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1rem;
-}
-
-@media only screen and (max-width: 25rem) {
-  .container {
+  @media only screen and (max-width: 25rem) {
     min-width: 100%;
     padding: 0 0.5rem;
     flex-direction: row;
@@ -56,8 +40,22 @@
       }
     }
   }
+`;
 
-  .stats {
+export const Icon = styled.img`
+  width: 4rem;
+  height: 4rem;
+`;
+
+export const Stats = styled.span`
+  margin-top: 0.5rem;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+
+  @media only screen and (max-width: 25rem) {
     flex-direction: column;
   }
-}
+`;

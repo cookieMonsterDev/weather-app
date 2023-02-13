@@ -1,4 +1,4 @@
-import weatherApi from "@/axios";
+import weatherApi from "@/utils/axiosConfig";
 import axios from "axios";
 import { Coordinates } from "../slices/currentCoordinatesSlice";
 import { forecastWeatherSlice } from "../slices/forecastWeatherSlice";

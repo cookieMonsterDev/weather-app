@@ -1,27 +1,28 @@
+import styled from "@emotion/styled";
+import BookmarkRemoveIcon from "@mui/icons-material/BookmarkRemove";
 
-
-.container {
+export const Container = styled.li`
   width: 100%;
   height: 4rem;
-  padding: 0 1rem; 
+  padding: 0 1rem;
   background-color: rgb(174, 167, 163);
   display: flex;
   justify-content: space-between;
   position: relative;
   align-items: center;
   border-radius: 1rem;
-}
+`;
 
-.lable {
+export const Label = styled.label`
   position: absolute;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 2rem;
   width: 70%;
-}
+`;
 
-.icon {
+export const Icon = styled(BookmarkRemoveIcon)`
   position: absolute;
   right: 1rem;
-}
+`;

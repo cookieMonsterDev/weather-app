@@ -1,6 +1,8 @@
-@import "../../styles/colors.module.scss";
+import styled from "@emotion/styled";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 
-.container {
+export const Container = styled.section`
   width: 100%;
   height: 20rem;
   border-radius: 0.6rem;
@@ -14,29 +16,29 @@
     "location  location"
     "weather  temp"
     "weather temp";
-}
+`;
 
-.location {
+export const Location = styled.div`
   grid-area: location;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-}
+`;
 
-.weather {
+export const Weather = styled.div`
   grid-area: weather;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
 
-  > img {
-    scale: 1.9;
-  }
-}
+export const Img = styled.img`
+  scale: 1.9;
+`;
 
-.temp {
+export const Temp = styled.div`
   grid-area: temp;
   display: flex;
   flex-direction: column;
@@ -44,16 +46,16 @@
   align-items: center;
   text-transform: capitalize;
 
-   > h1 {
+  > h1 {
     font-size: 3rem;
-   }
+  }
 
-   > span {
+  > span {
     margin-top: 0.6rem;
-   }
-}
+  }
+`;
 
-.icon {
+export const Icon = styled(BookmarkIcon)`
   width: 2rem;
   height: 2rem;
   color: white;
@@ -61,11 +63,24 @@
   top: 1rem;
   right: 1rem;
   cursor: pointer;
-}
 
-@media only screen and (max-width: 25rem) {
-  .icon {
+  @media only screen and (max-width: 25rem) {
     right: 0.5rem;
     top: 0.5rem;
   }
-}
+`;
+
+export const IconBorder = styled(BookmarkBorderIcon)`
+  width: 2rem;
+  height: 2rem;
+  color: white;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+
+  @media only screen and (max-width: 25rem) {
+    right: 0.5rem;
+    top: 0.5rem;
+  }
+`;

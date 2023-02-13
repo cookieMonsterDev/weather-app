@@ -1,8 +1,7 @@
+import { Container, Icon, TextFeild } from "./SearchBar.styled";
 import { useCustomDispatch } from "@/hooks/store";
 import { fetchCurrentWeatherCity } from "../../store/thunks/fetchCurrentWeatherCity";
-import SearchIcon from "@mui/icons-material/Search";
 import { FormEvent, useRef } from "react";
-import style from "./SearchBar.module.scss";
 
 const SearchBar = () => {
   const dispatch = useCustomDispatch();
@@ -18,15 +17,14 @@ const SearchBar = () => {
   };
 
   return (
-    <form className={style.container} onSubmit={handleSubmit}>
-      <input
+    <Container onSubmit={handleSubmit}>
+      <TextFeild
         type="text"
-        className={style.textFeild}
         placeholder="Enter city"
         ref={ref}
       />
-      <SearchIcon className={style.icon} />
-    </form>
+      <Icon />
+    </Container>
   );
 };
 

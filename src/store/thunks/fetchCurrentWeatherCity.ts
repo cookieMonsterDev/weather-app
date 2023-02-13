@@ -1,7 +1,6 @@
-import weatherApi from "@/axios";
+import weatherApi from "@/utils/axiosConfig";
 import { currentWeatherSlice } from "../slices/currentWeatherSlice";
 import { AppDispatch } from "../store";
-
 
 export const fetchCurrentWeatherCity =
   (payload: string) => async (dispatch: AppDispatch) => {

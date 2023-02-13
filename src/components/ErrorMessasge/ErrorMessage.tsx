@@ -1,14 +1,11 @@
-import style from "./ErrorMessage.module.scss";
-
-interface ErrorMessageProps {
-  message: string;
-}
+import { Container, Modal } from "./ErrorMessage.styled";
+import { ErrorMessageProps } from "./ErrorMessage.types";
 
 const ErrorMessage = ({ message }: ErrorMessageProps) => {
   return (
-    <section className={style.container}>
-      <div className={style.modal}>{message}</div>
-    </section>
+    <Container>
+      <Modal>{message}</Modal>
+    </Container>
   );
 };
 

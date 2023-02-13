@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import style from "./Navbar.module.scss";
 import SearchBar from "../SearchBar/SearchBar";
 import { Button } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -8,6 +7,7 @@ import { RootState } from "@/store/store";
 import SideMenu from "../SideMenu/SideMenu";
 import { useCustomDispatch } from "@/hooks/store";
 import { setMenu } from "@/store/slices/userSlice";
+import { Container } from "./NavBar.styled";
 
 const Navbar = () => {
   const dispatch = useCustomDispatch()
@@ -20,7 +20,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={style.container}>
+    <Container>
       <section>
         <SearchBar />
       </section>
@@ -37,7 +37,7 @@ const Navbar = () => {
         )}
       </section>
       {user && <SideMenu {...user} />}
-    </nav>
+    </Container>
   );
 };
 

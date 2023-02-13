@@ -1,11 +1,11 @@
-@import "../../styles/colors.module.scss";
+import styled from "@emotion/styled";
 
-.container {
+export const Container = styled.section`
   margin-top: 1rem;
   width: 100%;
   min-height: 18rem;
   border-radius: 0.6rem;
-  background-color: $primaryBackgroundColor;
+  background-color: #132f4c;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,22 +15,20 @@
     color: white;
     text-align: center;
   }
-}
+`;
 
-.list {
+export const List = styled.ul`
   min-height: 13rem;
   overflow: auto;
   display: grid;
   gap: 0.5rem;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 1fr;
-}
 
-@media only screen and (max-width: 25rem) {
-  .list {
+  @media only screen and (max-width: 25rem) {
     margin-bottom: 1rem;
     min-width: 90%;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(5, 1fr);
   }
-}
+`;

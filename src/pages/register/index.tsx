@@ -1,5 +1,5 @@
 import AuthFrom from "@/components/AuthFrom/AuthFrom";
-import styled from "@emotion/styled";
+import { MainContainer } from "@/styles/containers";
 import Head from "next/head";
 
 const Register = () => {
@@ -11,21 +11,11 @@ const Register = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <OverrideMain>
+      <MainContainer>
         <AuthFrom isRegister={true} />
-      </OverrideMain>
+      </MainContainer>
     </>
   );
 };
 
 export default Register;
-
-const OverrideMain = styled.main`
-  top: 0;
-
-  @media only screen and (max-width: 56.25rem) {
-    z-index: 100;
-    width: 100vw;
-    height: 100vh;
-  }
-`;

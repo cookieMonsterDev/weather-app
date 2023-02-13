@@ -1,4 +1,4 @@
-import weatherApi from "@/axios";
+import weatherApi from "@/utils/axiosConfig";
 import { Coordinates } from "../slices/currentCoordinatesSlice";
 import { currentWeatherSlice } from "../slices/currentWeatherSlice";
 import { AppDispatch } from "../store";
@@ -12,7 +12,7 @@ export const fetchCurrentWeather =
       const { data } = await weatherApi.get(URL);
 
       dispatch(currentWeatherSlice.actions.fetchCurrentWeatherSuccess(data));
-      dispatch(currentWeatherSlice.actions.resetError())
+      dispatch(currentWeatherSlice.actions.resetError());
       return;
     } catch (error) {
       dispatch(
@@ -20,4 +20,3 @@ export const fetchCurrentWeather =
       );
     }
   };
-

@@ -1,16 +1,16 @@
 import React from "react";
+import { Container, List } from "./ForecastWeatherComponent.styled";
 import { ForecastWeather } from "../../store/types/forecastWeather";
-import Card from "./componets/Card";
-import style from "./ForecastWeatherComponent.module.scss";
+import Card from "./Card/Card";
 
 const ForecastWeatherComponent = (props: ForecastWeather) => {
   return (
-    <section className={style.container}>
+    <Container>
       <h1>Fake 5 days forcast for {props.city.name}</h1>
-      <ul className={style.list}>
+      <List>
         {props.list.map(e => <Card key={e.dt} {...e}/>)}
-      </ul>
-    </section>
+      </List>
+    </Container>
   );
 };
 

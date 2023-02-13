@@ -1,10 +1,10 @@
-@import '../../styles/colors.module.scss';
+import styled from "@emotion/styled";
 
-.container {
+export const Container = styled.nav`
   width: 50vw;
   height: 4rem;
   padding: 0.3rem 0.5rem;
-  background-color: $primaryBackgroundColor;
+  background-color: #132f4c;
   display: flex;
   align-items: center;
   position: fixed;
@@ -19,11 +19,8 @@
       justify-content: flex-end;
     }
   }
-}
 
-
-@media only screen and (max-width: 56.25rem) {
-  .container {
+  @media only screen and (max-width: 56.25rem) {
     width: 100vw;
   }
-}
+`;

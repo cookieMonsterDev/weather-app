@@ -1,17 +1,12 @@
-import style from "./Bookmark.module.scss";
-import BookmarkRemoveIcon from "@mui/icons-material/BookmarkRemove";
 import { useCustomDispatch } from "@/hooks/store";
 import { fetchCurrentWeatherCity } from "@/store/thunks/fetchCurrentWeatherCity";
 import { setMenu } from "@/store/slices/userSlice";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { fetchUpdateBookmarks } from "@/store/thunks/fetchUpdateBookmarks";
+import { Container, Icon, Label } from "./Bookmark.styled";
 
-interface BookmarkProps {
-  name: string;
-}
-
-const Bookmark = ({ name }: BookmarkProps) => {
+const Bookmark = ({ name }: { name: string }) => {
   const dispatch = useCustomDispatch();
   const { user } = useSelector((state: RootState) => state.user);
 
@@ -38,15 +33,10 @@ const Bookmark = ({ name }: BookmarkProps) => {
   };
 
   return (
-    <li className={style.container}>
-      <label className={style.lable} onClick={handleBookmark}>
-        {name}
-      </label>
-      <BookmarkRemoveIcon
-        className={style.icon}
-        onClick={handleRemoveBookmark}
-      />
-    </li>
+    <Container>
+      <Label onClick={handleBookmark}>{name}</Label>
+      <Icon onClick={handleRemoveBookmark} />
+    </Container>
   );
 };
 

@@ -1,4 +1,4 @@
-import weatherApi from "@/axios";
+import weatherApi from "@/utils/axiosConfig";
 import { forecastWeatherSlice } from "../slices/forecastWeatherSlice";
 import { AppDispatch } from "../store";
 
