@@ -12,7 +12,7 @@ const login = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainContainer>
-        <AuthFrom isRegister={false}/>
+        <AuthFrom isRegister={false} />
       </MainContainer>
     </>
   );

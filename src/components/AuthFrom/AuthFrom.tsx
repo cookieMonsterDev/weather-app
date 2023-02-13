@@ -1,14 +1,7 @@
-import style from "./AuthFrom.module.scss";
-import CustomTextField from "../CustomTextField/CustomTextField";
 import HomeIcon from "@mui/icons-material/Home";
 import Link from "next/link";
 import { Button } from "@mui/material";
-import { FormEvent, useState, useEffect, useRef } from "react";
-import {
-  userNameValidator,
-  emailValidator,
-  passwordValidator,
-} from "./components/validators";
+import { useEffect } from "react";
 import { useCustomDispatch } from "@/hooks/store";
 import { fetchRegisterUser } from "../../store/thunks/fetchRegisterUser";
 import { fetchLoginUser } from "../../store/thunks/fetchLoginUser";
@@ -16,21 +9,24 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { useRouter } from "next/router";
 import { resetUserError } from "@/store/slices/userSlice";
+import { useFormik } from "formik";
+import {
+  initialValuesLogin,
+  initialValuesRegister,
+  validationSchemaLogin,
+  validationSchemaRegister,
+} from "./components/validator";
 
-interface AuthFromProps {
-  isRegister: boolean;
-}
+import { Container, Icon, Form, StyledTextField, Error } from "./AuthForm.styled";
 
-const AuthFrom = ({ isRegister }: AuthFromProps) => {
-  const [isDisabled, setDisabled] = useState(true);
+const AuthFrom = ({ isRegister }: { isRegister: boolean }) => {
   const router = useRouter();
   const { user, error } = useSelector((state: RootState) => state.user);
   const dispatch = useCustomDispatch();
-  const [formDate, setFromDate] = useState({});
 
-  const validUserName = useRef(isRegister ? userNameValidator("") : '');
-  const validEmail = useRef(emailValidator(""));
-  const validPassword = useRef(passwordValidator(""));
+  useEffect(() => {
+    dispatch(resetUserError());
+  }, []);
 
   useEffect(() => {
     if (user) {
@@ -38,108 +34,73 @@ const AuthFrom = ({ isRegister }: AuthFromProps) => {
     }
   }, [user]);
 
-  useEffect(() => {
-    dispatch(resetUserError())
-  }, [])
+  const formik = useFormik({
+    initialValues: isRegister ? initialValuesRegister : initialValuesLogin,
+    validationSchema: isRegister
+      ? validationSchemaRegister
+      : validationSchemaLogin,
+    onSubmit: (values) => {
+      console.log(values);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => {
-    const { id, value } = e.target;
+      if (isRegister) {
+        dispatch(fetchRegisterUser(values));
+        return;
+      }
 
-    if (id === "username") {
-      validUserName.current = userNameValidator(value);
-    }
-
-    if (id === "email") {
-      validEmail.current = emailValidator(value);
-    }
-
-    if (id === "password") {
-      validPassword.current = passwordValidator(value);
-    }
-
-    setFromDate({
-      ...formDate,
-      [id]: value,
-    });
-
-    if (
-      !validUserName.current &&
-      !validEmail.current &&
-      !validPassword.current
-    ) {
-      setDisabled(false);
-    }
-  };
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (isRegister) {
-      dispatch(fetchRegisterUser(formDate as any));
+      dispatch(fetchLoginUser(values));
       return;
-    }
-
-    dispatch(fetchLoginUser(formDate as any));
-    return;
-  };
+    },
+  });
 
   return (
-    <div className={style.container}>
-      <section className={style.content}>
-        <span className={style.icon}>
+    <Container>
+      <section>
+        <Icon>
           <Link href="/">
             <HomeIcon />
           </Link>
-        </span>
-        <form className={style.from} onSubmit={handleSubmit}>
+        </Icon>
+        <Form onSubmit={formik.handleSubmit}>
           <label>Sign in</label>
           {isRegister && (
-            <CustomTextField
+            <StyledTextField
               id="username"
+              name="username"
               label="Username"
-              helperText=""
-              onChange={handleChange}
-              validator={userNameValidator}
+              value={formik.values.username}
+              onChange={formik.handleChange}
+              error={formik.touched.username && Boolean(formik.errors.username)}
+              helperText={formik.touched.username && formik.errors.username}
             />
           )}
-          <CustomTextField
+          <StyledTextField
             id="email"
+            name="email"
             label="Email"
-            helperText=""
-            onChange={handleChange}
-            validator={emailValidator}
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            error={formik.touched.email && Boolean(formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
           />
-          <CustomTextField
+          <StyledTextField
             id="password"
+            name="password"
             label="Password"
-            helperText=""
-            onChange={handleChange}
-            validator={passwordValidator}
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
           />
-         { error && <span className={style.error}>
-            {error}
-          </span>}
-          <Button
-            variant="contained"
-            type="submit"
-            disabled={isDisabled}
-            sx={{
-              "&.Mui-disabled": {
-                color: "#f6f0f0",
-                background: "#f58585",
-              },
-            }}
-          >
+          {error && <Error>{error}</Error>}
+          <Button variant="contained" type="submit">
             {isRegister ? "Sign up" : "Sign in"}
           </Button>
           <Link href={isRegister ? "/login" : "/register"}>
             {isRegister ? "Login to accout?" : "Create an account?"}
           </Link>
-        </form>
+        </Form>
       </section>
-    </div>
+    </Container>
   );
 };
 
