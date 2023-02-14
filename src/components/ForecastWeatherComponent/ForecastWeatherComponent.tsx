@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, List } from "./ForecastWeatherComponent.styled";
-import { ForecastWeather } from "../../store/types/forecastWeather";
+import { ForecastWeather } from "../../store/slices/forcastWeather/forcastWeather.types";
 import Card from "./Card/Card";
 
 const ForecastWeatherComponent = (props: ForecastWeather) => {

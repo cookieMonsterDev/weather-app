@@ -6,7 +6,7 @@ import { useAppDispatch } from "../hooks/store";
 import CurentWeatherCard from "../components/CurentWeatherCard/CurentWeatherCard";
 import ForecastWeatherComponent from "../components/ForecastWeatherComponent/ForecastWeatherComponent";
 import forcast from "../fakeDate.json";
-import { ForecastWeather } from "@/store/types/forecastWeather";
+import { ForecastWeather } from "@/store/slices/forcastWeather/forcastWeather.types";
 import ErrorMessage from "../components/ErrorMessasge/ErrorMessage";
 import LoaderWheel from "@/components/LoaderWheel/LoaderWheel";
 

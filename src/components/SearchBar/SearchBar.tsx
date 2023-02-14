@@ -1,6 +1,6 @@
 import { Container, Icon, TextFeild } from "./SearchBar.styled";
 import { useAppDispatch } from "@/hooks/store";
-import { fetchWeatherCity } from "../../store/slices/weather";
+import { fetchWeatherCity } from "../../store/slices/weather/weather.thunks";
 import { FormEvent, useRef } from "react";
 
 const SearchBar = () => {
