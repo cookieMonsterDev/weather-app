@@ -1,19 +1,18 @@
 import { User } from "@/Schema/userSchema";
-import { RootState } from "@/store/store";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../hooks/store";
 import { useAppDispatch } from "@/hooks/store";
-import { resetUser, setMenu } from "@/store/slices/userSlice";
+import { setUser, setMenu } from "@/store/slices/user";
 import Button from "@mui/material/Button";
 import Bookmark from "./Bookmark/Bookmark";
 import { BlurOverlay, CloseButton, Container, Menu } from "./SideMenu.styled";
 
 const SideMenu = (props: User) => {
   const dispatch = useAppDispatch();
-  const { isMenu } = useSelector((state: RootState) => state.user);
+  const { isMenu } = useAppSelector((state) => state.user);
 
   const handleLogOut = () => {
     dispatch(setMenu(false));
-    dispatch(resetUser());
+    dispatch(setUser(null));
   };
 
   return (

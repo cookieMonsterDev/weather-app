@@ -1,14 +1,14 @@
 import { useAppDispatch } from "@/hooks/store";
-import { fetchWeatherCity } from "@/store/slices/weather";
-import { setMenu } from "@/store/slices/userSlice";
-import { useSelector } from "react-redux";
+import { fetchWeatherCity } from "@/store/slices/weather/weather.thunks";
+import { setMenu } from "@/store/slices/user";
+import { useAppSelector } from "../../../hooks/store";
 import { RootState } from "@/store/store";
-import { fetchUpdateBookmarks } from "@/store/thunks/fetchUpdateBookmarks";
+import { fetchUserBookmarks } from "@/store/slices/user/user.thunks";
 import { Container, Icon, Label } from "./Bookmark.styled";
 
 const Bookmark = ({ name }: { name: string }) => {
   const dispatch = useAppDispatch();
-  const { user } = useSelector((state: RootState) => state.user);
+  const { user } = useAppSelector((state: RootState) => state.user);
 
   const handleBookmark = () => {
     dispatch(fetchWeatherCity(name));
@@ -25,7 +25,7 @@ const Bookmark = ({ name }: { name: string }) => {
     }
 
     dispatch(
-      fetchUpdateBookmarks({
+      fetchUserBookmarks({
         id: user?._id!,
         cities: array!,
       })

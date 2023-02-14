@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { CurrentWeather } from "@/store/slices/weather/weather.types";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store/store";
-import { fetchUpdateBookmarks } from "@/store/thunks/fetchUpdateBookmarks";
+import { useAppSelector } from "../../hooks/store";
+import { fetchUserBookmarks } from "../../store/slices/user/user.thunks";
 import { useAppDispatch } from "@/hooks/store";
 import {
   Container,
@@ -17,7 +16,7 @@ import {
 const CurentWeatherCard = (props: CurrentWeather) => {
   const dispatch = useAppDispatch();
 
-  const { user } = useSelector((state: RootState) => state.user);
+  const { user } = useAppSelector((state) => state.user);
 
   const currentDate = new Date();
   const formaterDate = new Intl.DateTimeFormat("en-GB", { dateStyle: "full" });
@@ -56,7 +55,7 @@ const CurentWeatherCard = (props: CurrentWeather) => {
     }
 
     dispatch(
-      fetchUpdateBookmarks({
+      fetchUserBookmarks({
         id: user?._id!,
         cities: array!,
       })
@@ -69,7 +68,7 @@ const CurentWeatherCard = (props: CurrentWeather) => {
     array.push(props.name);
 
     dispatch(
-      fetchUpdateBookmarks({
+      fetchUserBookmarks({
         id: user?._id!,
         cities: array!,
       })

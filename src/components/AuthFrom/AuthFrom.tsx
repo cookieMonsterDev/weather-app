@@ -5,8 +5,7 @@ import { useEffect } from "react";
 import { useAppDispatch } from "@/hooks/store";
 import { fetchRegisterUser } from "../../store/thunks/fetchRegisterUser";
 import { fetchLoginUser } from "../../store/thunks/fetchLoginUser";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store/store";
+import { useAppSelector } from "../../hooks/store";
 import { useRouter } from "next/router";
 import { resetUserError } from "@/store/slices/userSlice";
 import { useFormik } from "formik";
@@ -21,7 +20,7 @@ import { Container, Icon, Form, StyledTextField, Error } from "./AuthForm.styled
 
 const AuthFrom = ({ isRegister }: { isRegister: boolean }) => {
   const router = useRouter();
-  const { user, error } = useSelector((state: RootState) => state.user);
+  const { user, error } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

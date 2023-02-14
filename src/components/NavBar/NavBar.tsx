@@ -2,16 +2,15 @@ import { useRouter } from "next/router";
 import SearchBar from "../SearchBar/SearchBar";
 import { Button } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store/store";
+import { useAppSelector } from "../../hooks/store";
 import SideMenu from "../SideMenu/SideMenu";
 import { useAppDispatch } from "@/hooks/store";
-import { setMenu } from "@/store/slices/userSlice";
+import { setMenu } from "@/store/slices/user";
 import { Container } from "./NavBar.styled";
 
 const Navbar = () => {
   const dispatch = useAppDispatch()
-  const { user } = useSelector((state: RootState) => state.user);
+  const { user } = useAppSelector((state) => state.user);
 
   const router = useRouter();
 

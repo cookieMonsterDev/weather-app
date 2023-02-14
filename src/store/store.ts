@@ -13,7 +13,7 @@ import storage from "redux-persist/lib/storage";
 import weatherReducer from "./slices/weather";
 import coordinatesReducer from "./slices/coordinates";
 import forecastWeatherReducer from "./slices/forcastWeather";
-import userReducer from "./slices/userSlice";
+import userReducer from "./slices/user";
 import { listenerMiddleware } from "./middleware";
 
 const rootReducer = combineReducers({
