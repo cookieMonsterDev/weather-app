@@ -1,4 +1,4 @@
-import { List } from "../../../store/types/forecastWeather";
+import { List } from "../../../store/slices/forcastWeather/forcastWeather.types";
 import CloudQueueIcon from "@mui/icons-material/CloudQueue";
 import OpacityIcon from "@mui/icons-material/Opacity";
 import { Container, Icon, Stats } from "./Card.styled";
