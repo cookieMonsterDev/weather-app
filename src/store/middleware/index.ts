@@ -5,7 +5,7 @@ import {
   TypedAddListener,
   TypedStartListening,
 } from "@reduxjs/toolkit";
-import { fetchWeather } from "../slices/weather";
+import { fetchWeather } from "../slices/weather/weather.thunks";
 import { getCoordinates } from "../slices/coordinates";
 import { AppDispatch, RootState } from "../store";
 
