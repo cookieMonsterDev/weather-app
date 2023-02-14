@@ -5,12 +5,12 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import SideMenu from "../SideMenu/SideMenu";
-import { useCustomDispatch } from "@/hooks/store";
+import { useAppDispatch } from "@/hooks/store";
 import { setMenu } from "@/store/slices/userSlice";
 import { Container } from "./NavBar.styled";
 
 const Navbar = () => {
-  const dispatch = useCustomDispatch()
+  const dispatch = useAppDispatch()
   const { user } = useSelector((state: RootState) => state.user);
 
   const router = useRouter();

@@ -1,16 +1,16 @@
 import { Container, Icon, TextFeild } from "./SearchBar.styled";
-import { useCustomDispatch } from "@/hooks/store";
-import { fetchCurrentWeatherCity } from "../../store/thunks/fetchCurrentWeatherCity";
+import { useAppDispatch } from "@/hooks/store";
+import { fetchWeatherCity } from "../../store/slices/weather";
 import { FormEvent, useRef } from "react";
 
 const SearchBar = () => {
-  const dispatch = useCustomDispatch();
+  const dispatch = useAppDispatch();
   const ref = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const city = ref.current!.value.toString();
-    dispatch(fetchCurrentWeatherCity(city));
+    dispatch(fetchWeatherCity(city));
     if (ref.current!.value) {
       ref.current!.value = "";
     }

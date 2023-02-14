@@ -2,7 +2,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import Link from "next/link";
 import { Button } from "@mui/material";
 import { useEffect } from "react";
-import { useCustomDispatch } from "@/hooks/store";
+import { useAppDispatch } from "@/hooks/store";
 import { fetchRegisterUser } from "../../store/thunks/fetchRegisterUser";
 import { fetchLoginUser } from "../../store/thunks/fetchLoginUser";
 import { useSelector } from "react-redux";
@@ -22,7 +22,7 @@ import { Container, Icon, Form, StyledTextField, Error } from "./AuthForm.styled
 const AuthFrom = ({ isRegister }: { isRegister: boolean }) => {
   const router = useRouter();
   const { user, error } = useSelector((state: RootState) => state.user);
-  const dispatch = useCustomDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(resetUserError());
@@ -39,7 +39,7 @@ const AuthFrom = ({ isRegister }: { isRegister: boolean }) => {
     validationSchema: isRegister
       ? validationSchemaRegister
       : validationSchemaLogin,
-    onSubmit: (values) => {
+    onSubmit: (values: any) => {
       console.log(values);
 
       if (isRegister) {

@@ -1,3 +1,8 @@
+export interface WeatherState {
+  weather: CurrentWeather | null;
+  isLoadingWeather: boolean;
+  weatherError: string | null;
+}
 
 export interface CurrentWeather {
   coord: Coord;

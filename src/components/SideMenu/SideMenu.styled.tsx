@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { css } from "@emotion/css";
+import { css } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 export const Container = styled.div<{ isMenu: boolean }>`

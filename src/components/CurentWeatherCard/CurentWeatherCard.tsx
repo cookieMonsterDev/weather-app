@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { CurrentWeather } from "@/store/types/currentWeather";
+import { CurrentWeather } from "@/store/slices/weather/weather.types";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { fetchUpdateBookmarks } from "@/store/thunks/fetchUpdateBookmarks";
-import { useCustomDispatch } from "@/hooks/store";
+import { useAppDispatch } from "@/hooks/store";
 import {
   Container,
   Location,
@@ -15,7 +15,7 @@ import {
 } from "./CurentWeatherCard.styled";
 
 const CurentWeatherCard = (props: CurrentWeather) => {
-  const dispatch = useCustomDispatch();
+  const dispatch = useAppDispatch();
 
   const { user } = useSelector((state: RootState) => state.user);
 

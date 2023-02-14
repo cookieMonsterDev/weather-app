@@ -10,22 +10,23 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import currentWeatherReducer from "./slices/currentWeatherSlice";
-import currentCoordinatesReducer from "./slices/currentCoordinatesSlice";
-import forecastWeatherSlice from "./slices/forecastWeatherSlice";
+import weatherReducer from "./slices/weather";
+import coordinatesReducer from "./slices/coordinates";
+import forecastWeatherReducer from "./slices/forcastWeather";
 import userReducer from "./slices/userSlice";
+import { listenerMiddleware } from "./middleware";
 
 const rootReducer = combineReducers({
-  currentWeather: currentWeatherReducer,
-  forecastWeather: forecastWeatherSlice,
-  currentCoordinates: currentCoordinatesReducer,
+  weather: weatherReducer,
+  forcastWeather: forecastWeatherReducer,
+  coordinates: coordinatesReducer,
   user: userReducer,
 });
 
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ['currentWeather', 'forecastWeather']
+  blacklist: ["currentWeather", "forecastWeather"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -33,11 +34,11 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
-  getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }),
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }).prepend(listenerMiddleware.middleware),
 });
 
 export const persistor = persistStore(store);
