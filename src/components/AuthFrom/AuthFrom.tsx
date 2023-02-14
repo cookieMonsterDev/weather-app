@@ -3,11 +3,9 @@ import Link from "next/link";
 import { Button } from "@mui/material";
 import { useEffect } from "react";
 import { useAppDispatch } from "@/hooks/store";
-import { fetchRegisterUser } from "../../store/thunks/fetchRegisterUser";
-import { fetchLoginUser } from "../../store/thunks/fetchLoginUser";
+import { fetchUserLogin, fetchUserRegister } from "../../store/slices/user/user.thunks";
 import { useAppSelector } from "../../hooks/store";
 import { useRouter } from "next/router";
-import { resetUserError } from "@/store/slices/userSlice";
 import { useFormik } from "formik";
 import {
   initialValuesLogin,
@@ -20,12 +18,8 @@ import { Container, Icon, Form, StyledTextField, Error } from "./AuthForm.styled
 
 const AuthFrom = ({ isRegister }: { isRegister: boolean }) => {
   const router = useRouter();
-  const { user, error } = useAppSelector((state) => state.user);
+  const { user, userError } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(resetUserError());
-  }, []);
 
   useEffect(() => {
     if (user) {
@@ -39,14 +33,12 @@ const AuthFrom = ({ isRegister }: { isRegister: boolean }) => {
       ? validationSchemaRegister
       : validationSchemaLogin,
     onSubmit: (values: any) => {
-      console.log(values);
-
       if (isRegister) {
-        dispatch(fetchRegisterUser(values));
+        dispatch(fetchUserRegister(values));
         return;
       }
 
-      dispatch(fetchLoginUser(values));
+      dispatch(fetchUserLogin(values));
       return;
     },
   });
@@ -90,7 +82,7 @@ const AuthFrom = ({ isRegister }: { isRegister: boolean }) => {
             error={formik.touched.password && Boolean(formik.errors.password)}
             helperText={formik.touched.password && formik.errors.password}
           />
-          {error && <Error>{error}</Error>}
+          {userError && <Error>{userError}</Error>}
           <Button variant="contained" type="submit">
             {isRegister ? "Sign up" : "Sign in"}
           </Button>
