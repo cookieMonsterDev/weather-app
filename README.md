@@ -1,13 +1,11 @@
 # Weather-app
 
 <img src="./public/app1.png" width="300" height="500">
-<br/>
 
 # Features
 - Current weather by user coordinates
 - Current weather in city
 - Store cities bookmarks for users
-<br/>
 
 # Quick Start
 
@@ -26,13 +24,11 @@ VERCEL_URL=localhost:3000
 yarn
 yarn start dev
 ```
-<br />
 
 ## Vercel
 1. Sign in/up on [Vercel](https://vercel.com/)
 2. Deploy project via [guide](https://vercel.com/docs/concepts/get-started/deploy) 
 3. Add environment variables for project via [guide](https://vercel.com/docs/concepts/projects/environment-variables)
-<br />
 
 # License
 Released under the [MIT License](./LICENSE).
