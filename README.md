@@ -22,7 +22,7 @@ VERCEL_URL=localhost:3000
 
 ```bash
 yarn
-yarn start dev
+yarn dev
 ```
 
 ## Vercel
